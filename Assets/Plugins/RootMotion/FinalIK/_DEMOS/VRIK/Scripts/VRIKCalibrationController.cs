@@ -20,12 +20,18 @@ namespace RootMotion.Demos
         [Header("Data stored by Calibration")]
         public VRIKCalibrator.CalibrationData data = new VRIKCalibrator.CalibrationData();
 
-        void LateUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.C))
+        public bool typeC = false;
+        public bool typeD = false;
+        public bool typeS = false;
+
+        void LateUpdate() { 
+        
+        //Input.GetKeyDown(KeyCode.C)
+            if (typeC == true)
             {
                 // Calibrate the character, store data of the calibration
                 data = VRIKCalibrator.Calibrate(ik, settings, headTracker, bodyTracker, leftHandTracker, rightHandTracker, leftFootTracker, rightFootTracker);
+                //Destroy(gameObject);
             }
 
             /*
@@ -34,8 +40,9 @@ namespace RootMotion.Demos
              * Calibration data still depends on bone orientations though, so the data is valid only for the character that it was calibrated to or characters with identical bone structures.
              * If you wish to use more than one character, it would be best to calibrate them all at once and store the CalibrationData for each one.
              * */
-            if (Input.GetKeyDown(KeyCode.D))
+            if (typeD == true)
             {
+                // Input.GetKeyDown(KeyCode.D)
                 if (data.scale == 0f)
                 {
                     Debug.LogError("No Calibration Data to calibrate to, please calibrate with settings first.");
@@ -48,8 +55,9 @@ namespace RootMotion.Demos
             }
 
             // Recalibrates avatar scale only. Can be called only if the avatar has been calibrated already.
-            if (Input.GetKeyDown(KeyCode.S))
+            if (typeS == true)
             {
+                //Input.GetKeyDown(KeyCode.S)
                 if (data.scale == 0f)
                 {
                     Debug.LogError("Avatar needs to be calibrated before RecalibrateScale is called.");

@@ -269,8 +269,8 @@ namespace RootMotion.FinalIK
             data.rightHand = new CalibrationData.Target(ik.solver.rightArm.target);
             data.leftFoot = new CalibrationData.Target(ik.solver.leftLeg.target);
             data.rightFoot = new CalibrationData.Target(ik.solver.rightLeg.target);
-            data.leftLegGoal = new CalibrationData.Target(ik.solver.leftLeg.bendGoal);
-            data.rightLegGoal = new CalibrationData.Target(ik.solver.rightLeg.bendGoal);
+            //data.leftLegGoal = new CalibrationData.Target(ik.solver.leftLeg.bendGoal);
+            //data.rightLegGoal = new CalibrationData.Target(ik.solver.rightLeg.bendGoal);
             data.pelvisTargetRight = rootController != null? rootController.pelvisTargetRight: Vector3.zero;
             data.pelvisPositionWeight = ik.solver.spine.pelvisPositionWeight;
             data.pelvisRotationWeight = ik.solver.spine.pelvisRotationWeight;
@@ -312,11 +312,11 @@ namespace RootMotion.FinalIK
             leg.rotationWeight = 1f;
 
             // Bend goal
-            Transform bendGoal = leg.bendGoal == null ? (new GameObject(name + " Leg Bend Goal")).transform : leg.bendGoal;
-            bendGoal.position = lastBone.position + trackerSpace * Vector3.forward + trackerSpace * Vector3.up;// * 0.5f;
-            bendGoal.parent = tracker;
-            leg.bendGoal = bendGoal;
-            leg.bendGoalWeight = 1f;
+            //Transform bendGoal = leg.bendGoal == null ? (new GameObject(name + " Leg Bend Goal")).transform : leg.bendGoal;
+            //bendGoal.position = lastBone.position + trackerSpace * Vector3.forward + trackerSpace * Vector3.up;// * 0.5f;
+            //bendGoal.parent = tracker;
+            //leg.bendGoal = bendGoal;
+            //leg.bendGoalWeight = 1f;
         }
 
         /// <summary>
